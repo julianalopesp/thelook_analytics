@@ -1,0 +1,39 @@
+models:
+  - name: stg_thelook__users
+    description: Modelo de staging para a tabela de usuários
+    columns:
+      - name: user_id
+        description: Identificador único do usuário
+        tests:
+          - not_null
+          - unique
+
+      - name: first_name  
+        description: Primeiro nome do usuário
+        tests:
+          - not_null
+
+      - name: last_name
+        description: Sobrenome do usuário
+        
+      - name: age
+        description: Idade do usuário
+
+      - name: gender
+        description: Gênero do usuário
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['M', 'F']
+
+      - name: state_name
+        description: Estado de residência do usuário
+
+      - name: country
+        description: País de residência do usuário
+
+      - name: traffic_source
+        description: Fonte de tráfego do usuário
+
+      - name: created_at
+        description: Data de criação do registro

@@ -1,0 +1,20 @@
+sources:
+  - name: raw_thelook
+    description: Dados brutos do projeto The Look
+    database: thelook-ecommerce-496301
+    schema: raw_thelook
+    tables:
+      - name: users
+        description: Dados brutos da tabela de usuários
+
+      - name: orders
+        description: Dados brutos da tabela de pedidos
+
+      - name: order_items
+        description: Dados brutos da tabela de itens de pedidos
+
+      - name: products
+        description: Dados brutos da tabela de produtos
+
+      - name: distribution_centers
+        description: Dados brutos da tabela de centros de distribuição
