@@ -75,3 +75,33 @@ models:
       
       - name: shipped_at
         description: Data de envio do pedido
+      
+  - name: stg_thelook__order_items
+    description: Modelo de staging para a tabela de itens do pedido
+    columns:
+      - name: item_id
+        description: Identificador único do item do pedido
+        data_tests:
+          - not_null
+          - unique
+      
+      - name: order_id
+        description: Chave estrangeira para o pedido ao qual o item pertence
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_thelook__orders')
+                field: order_id
+      
+      - name: product_id
+        description: Chave estrangeira do produto do item do pedido
+      
+      - name: sale_price
+        description: Preço de venda do item do pedido
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min: 0
+                inclusive: false
