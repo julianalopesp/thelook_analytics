@@ -10,7 +10,7 @@ models:
 
       - name: first_name  
         description: Primeiro nome do usuário
-        tests:
+        data_tests:
           - not_null
 
       - name: last_name
@@ -21,7 +21,7 @@ models:
 
       - name: gender
         description: Gênero do usuário
-        tests:
+        data_tests:
           - accepted_values:
               arguments:
                 values: ['M', 'F']
@@ -37,3 +37,41 @@ models:
 
       - name: created_at
         description: Data de criação do registro
+    
+
+  - name: stg_thelook__orders
+    description: Modelo de staging para a tabela de pedidos
+    columns:
+      - name: order_id
+        description: Identificador único do pedido
+        data_tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: Chave estrangeira para o usuário que fez o pedido
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_thelook__users')
+                field: user_id
+
+      - name: order_status
+        description: Status do pedido
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Shipped', 'Complete', 'Processing', 'Cancelled', 'Returned']
+
+      - name: created_at
+        description: Data de criação do pedido
+        data_tests:
+          - not_null
+      
+      - name: returned_at
+        description: Data de devolução do pedido
+      
+      - name: shipped_at
+        description: Data de envio do pedido
