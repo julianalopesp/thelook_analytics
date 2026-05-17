@@ -10,7 +10,7 @@ renamed as (
         id as item_id,
         order_id,
         product_id,
-        sale_price
+        round(cast(sale_price as numeric), 2) as sale_price
     from source
 )
 

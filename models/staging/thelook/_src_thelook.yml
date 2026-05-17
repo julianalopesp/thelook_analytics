@@ -15,6 +15,3 @@ sources:
 
       - name: products
         description: Dados brutos da tabela de produtos
-
-      - name: distribution_centers
-        description: Dados brutos da tabela de centros de distribuição
