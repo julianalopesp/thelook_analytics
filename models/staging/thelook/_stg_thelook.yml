@@ -4,7 +4,7 @@ models:
     columns:
       - name: user_id
         description: Identificador único do usuário
-        tests:
+        data_tests:
           - not_null
           - unique
 
@@ -76,6 +76,7 @@ models:
       - name: shipped_at
         description: Data de envio do pedido
       
+
   - name: stg_thelook__order_items
     description: Modelo de staging para a tabela de itens do pedido
     columns:
@@ -105,3 +106,43 @@ models:
               arguments:
                 min: 0
                 inclusive: false
+
+
+  - name: stg_thelook__products
+    description: Modelo de staging para a tabela de produtos
+    columns:
+      - name: product_id
+        description: Identificador único do produto
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: Nome do produto
+
+      - name: category
+        description: Categoria do produto
+      
+      - name: brand
+        description: Marca do produto
+
+      - name: department
+        description: Departamento do produto
+
+      - name: cost_price
+        description: Preço de custo do produto
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min: 0
+                inclusive: true
+
+      - name: retail_price
+        description: Preço de venda do produto
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min: 0
+                inclusive: true

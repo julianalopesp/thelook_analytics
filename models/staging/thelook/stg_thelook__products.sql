@@ -13,7 +13,7 @@ renamed as (
         category,
         brand,
         department,
-        round(cast(cost as numeric), 2) as cost,
+        round(cast(cost as numeric), 2) as cost_price,
         round(cast(retail_price as numeric), 2) as retail_price
     from source
 
